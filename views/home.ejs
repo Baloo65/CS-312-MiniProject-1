@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+    <!-- Left: Create a Post -->
+    <div class="left-section">
+        <h1>Create a New Post</h1>
+        <form action="/create-post" method="POST">
+            <input type="text" name="author" placeholder="Author" required>
+            <input type="text" name="title" placeholder="Post Title" required>
+            <textarea name="content" placeholder="Write your post..." required></textarea>
+
+            <div class="button-row">
+                <a href="/blog" class="view-posts-btn">View Posts</a>
+                <button type="submit" class="publish-btn">Publish</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Right: Recent Posts -->
+    <div class="right-section">
+        <h2>Recent Posts</h2>
+        <% if (posts.length === 0) { %>
+            <p>No posts yet.</p>
+        <% } else { %>
+            <ul>
+                <% posts.forEach(post => { %>
+                    <li>
+                        <strong><%= post.title %></strong>  
+                        by <%= post.author %> on <%= post.createdAt %>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } %>
+    </div>
+    <script>
+    const textarea = document.querySelector("textarea");
+    textarea.addEventListener("input", function () {
+        this.style.height = "auto";   // reset
+        this.style.height = (this.scrollHeight) + "px"; // expand to fit content
+    });
+</script>
+
+</body>
+</html>
+
