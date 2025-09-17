@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -59,4 +60,16 @@ app.get("/blog", (req, res) => {
 
 app.listen (port, ()=> {
     console.log(`Server running on port ${port}.`);
+=======
+import express from "express";
+const app = express();
+const port = 3000;
+
+app.get("/", (req,res)=>{
+    res.send("Hello World!")
+});
+
+app.listen (port, ()=> {
+    console.log(`Server running on port ${port}.`);
+>>>>>>> bcea026db06a9b816283bc85f09e62dedb3300f1
 });
