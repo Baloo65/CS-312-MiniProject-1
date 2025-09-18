@@ -22,21 +22,30 @@
     </div>
 
     <!-- Right: Recent Posts -->
-    <div class="right-section">
-        <h2>Recent Posts</h2>
-        <% if (posts.length === 0) { %>
-            <p>No posts yet.</p>
-        <% } else { %>
-            <ul>
-                <% posts.forEach(post => { %>
-                    <li>
-                        <strong><%= post.title %></strong>  
-                        by <%= post.author %> on <%= post.createdAt %>
-                    </li>
-                <% }) %>
-            </ul>
-        <% } %>
-    </div>
+<div class="right-section">
+    <h2>All Posts</h2>
+    <% if (posts.length === 0) { %>
+        <p>No posts yet.</p>
+    <% } else { %>
+        <ul>
+            <% posts.forEach(post => { %>
+                <li>
+                    <h2><%= post.title %></h2>
+                    <p><%= post.content %></p>
+                    <p><em>by <%= post.author %> on <%= post.createdAt %></em></p>
+
+                    <!-- Edit/Delete -->
+                    <form action="/edit/<%= post.id %>" method="GET" style="display:inline;">
+                        <button type="submit">Edit</button>
+                    </form>
+                    <form action="/delete/<%= post.id %>" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+</div>
     <script>
     const textarea = document.querySelector("textarea");
     textarea.addEventListener("input", function () {

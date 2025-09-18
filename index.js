@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -56,20 +55,37 @@ app.get("/blog", (req, res) => {
         posts: blogPosts 
     });
 });
+// Delete post
+app.post("/delete/:id", (req, res) => {
+    blogPosts = blogPosts.filter(post => post.id !== req.params.id);
+    res.redirect("/");
+});
 
+// Edit form (loads existing post)
+app.get("/edit/:id", (req, res) => {
+    const post = blogPosts.find(p => p.id === req.params.id);
+    if (!post) return res.redirect("/");
 
-app.listen (port, ()=> {
-    console.log(`Server running on port ${port}.`);
-=======
-import express from "express";
-const app = express();
-const port = 3000;
+    res.render("edit", {
+        title: "Edit Post",
+        post
+    });
+});
 
-app.get("/", (req,res)=>{
-    res.send("Hello World!")
+// Handle edit submission
+app.post("/edit/:id", (req, res) => {
+    const { author, title, content } = req.body;
+    const post = blogPosts.find(p => p.id === req.params.id);
+
+    if (post) {
+        post.author = author.trim();
+        post.title = title.trim();
+        post.content = content.trim();
+    }
+
+    res.redirect("/");
 });
 
 app.listen (port, ()=> {
     console.log(`Server running on port ${port}.`);
->>>>>>> bcea026db06a9b816283bc85f09e62dedb3300f1
 });

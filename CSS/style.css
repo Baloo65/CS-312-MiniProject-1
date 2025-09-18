@@ -89,3 +89,55 @@ form textarea {
     transform: translateY(2px);
     box-shadow: 1px 1px 3px #666;
 }
+
+/* Blog page styles */
+body.blog-page {
+    background-color: #f0f0f0; /* light grey background */
+    display: block; /* reset flex from homepage */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.blog-page h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.blog-page ul {
+    list-style-type: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.blog-page li {
+    background: white;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+}
+
+.blog-page li h2 {
+    margin-top: 0;
+}
+
+/* "Write another post" button */
+.blog-page a.write-post-btn {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 12px 25px;
+    background: #4da6ff;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 6px;
+    box-shadow: 3px 3px 6px #999;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.blog-page a.write-post-btn:active {
+    transform: translateY(2px);
+    box-shadow: 1px 1px 3px #666;
+}
