@@ -2,10 +2,15 @@
 <html>
 <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
-<body>
-    <h1>All Blog Posts</h1>
+<body class="blog-page">
+
+    <div class="blog-header">
+        <h1>All Blog Posts</h1>
+        <a href="/" class="publish-btn">Write Another Post</a>
+    </div>
+
 
     <% if (posts.length === 0) { %>
         <p>No posts yet. <a href="/">Create one here</a>.</p>
@@ -29,6 +34,6 @@
 </ul>
     <% } %>
 
-    <p><a href="/">Create another post</a></p>
+
 </body>
 </html>
